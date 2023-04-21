@@ -1,6 +1,9 @@
 #!/bin/bash
+echo "creating vitual environment..."
+python3 -m venv venv
+
 echo "Entering virtual environment..."
-source .venv/bin/activate
+source venv/bin/activate
 
 echo "Verifying environment variables..."
 echo "DATABASE_URL: $DATABASE_URL"
