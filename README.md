@@ -1,5 +1,5 @@
 
-# Projeto Web Scraper :spider_web: :computer
+# Projeto Web Scraper :spider_web
 
 Este é um projeto de Web Scraper construído para coletar dados de páginas web e armazená-los em um banco de dados. Ele é projetado para ser fácil de configurar e executar tanto localmente quanto em uma instância AWS EC2, os sites utilizados foram: Mercado Livre e Buscapé, dois e-commerces Brasileiros.
 
@@ -62,6 +62,9 @@ Siga os passos abaixo para configurar e executar o projeto em uma instância AWS
 
 - Crie um grupo de segurança com as seguintes regras de entrada:
   - SSH - TCP - 22
+
+- Adicione o nome do grupo de sergurança no script handle_call_spot_spiders.sh na variável `SECURITY_GROUP_NAME`.
+
 - Crie uma chave `.pem` na região escolhida e baixe-a para a pasta raiz do projeto, ou altere o caminho no arquivo `handle_call_spot_spiders.sh`.
 
 - Dê permissão de execução para o arquivo `handle_call_spot_spiders.sh` e execute-o:
@@ -94,4 +97,4 @@ chmod +x script_to_setup_environment.sh
 script_to_setup_environment.sh
 ```
 
-Agora, o projeto está configurado e executando na instância AWS EC2! :rocket:, Irá funcionar da mesma maneira, porém irá utilizar recursos da maquina ec2 escolhida.
+Agora, o projeto está configurado e executando na instância AWS EC2! :rocket:, Irá funcionar da mesma maneira porém irá utilizar recursos da maquina ec2 escolhida.
