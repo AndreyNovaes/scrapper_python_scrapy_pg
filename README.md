@@ -1,5 +1,5 @@
 
-# Projeto Web Scraper :spider_web
+# Projeto Web Scraper 🕸️💻
 
 Este é um projeto de Web Scraper construído para coletar dados de páginas web e armazená-los em um banco de dados. Ele é projetado para ser fácil de configurar e executar tanto localmente quanto em uma instância AWS EC2, os sites utilizados foram: Mercado Livre e Buscapé, dois e-commerces Brasileiros.
 
