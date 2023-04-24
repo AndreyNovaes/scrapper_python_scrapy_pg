@@ -5,9 +5,20 @@ python3 -m venv venv
 echo "Entering virtual environment..."
 source venv/bin/activate
 
-echo "Verifying environment variables..."
-echo "DATABASE_URL: $DATABASE_URL"
-echo "USER_AGENT: $USER_AGENT"
+echo "Setting environment variables..."
+if [ -f .env ]; then
+  while IFS= read -r line; do
+    if [[ ! $line =~ ^# && $line ]]; then
+      IFS="=" read -r key value <<< "$line"
+      value="${value%\"}"
+      value="${value#\"}"
+      export "$key=$value"
+    fi
+  done < .env
+else
+  echo "No .env file found. Exiting."
+  exit 1
+fi
 
 echo "Installing requirements..."
 pip install -r requirements.txt
