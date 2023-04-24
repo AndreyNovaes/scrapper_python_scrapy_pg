@@ -2,3 +2,4 @@
 __pycache__
 .env
 venv
+us-west-1.pem
