@@ -16,6 +16,7 @@ Siga os passos abaixo para configurar e executar o projeto localmente:
 
 ```bash
 git clone https://github.com/AndreyNovaes/scrapper_python_scrapy_pg.git
+cd scrapper_python_scrapy_pg
 ```
 
 1.2. Copie o arquivo de exemplo de variáveis de ambiente e configure as variáveis:
@@ -47,23 +48,23 @@ Siga os passos abaixo para configurar e executar o projeto em uma instância AWS
 2.2. Clone o projeto e navegue até a pasta do projeto:
 
 ```bash
-git clone git clone https://github.com/AndreyNovaes/scrapper_python_scrapy_pg.git
+git clone https://github.com/AndreyNovaes/scrapper_python_scrapy_pg.git
+cd scrapper_python_scrapy_pg
 ```
 
 2.3. Copie o arquivo de exemplo de variáveis de ambiente e configure as variáveis:
+
+_Lembre-se de usar aspas duplas ao definir o valor de `USER_AGENT`._
 
 ```bash
 cp .env.example .env
 ```
 
-```bash
-Lembre-se de usar aspas duplas ao definir o valor de `USER_AGENT`.
-```
-
 2.4. Escolha uma região para criar o servidor spot (neste exemplo, usamos `us-west-1` - N. Califórnia).
 
 2.5. Crie um grupo de segurança com o nome `us-west-1`, que foi utilizado no exemplo, e adicione as seguintes regras:
-  - SSH - TCP - 22
+
+- SSH - TCP - 22
 
 2.6. Adicione o nome do grupo de segurança no script handle_call_spot_spiders.sh na variável `SECURITY_GROUP_NAME` ou, caso o nome seja `us-west-1` não precisa fazer mudança já que o nome do grupo de segurança usado no exemplo foi `us-west-1`
 
