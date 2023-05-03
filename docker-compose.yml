@@ -1,0 +1,7 @@
+version: '3.9'
+
+services:
+  scrapy_app:
+    platform: linux/x86_64 # desktop cpus x86_64 arquitecture like any ryzen or intel
+    # platform: linux/arm64/v8 # raspberry pi, apple new cpus, smartphones ...
+    build: .
