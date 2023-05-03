@@ -1,12 +1,14 @@
-import os
+from fake_useragent import UserAgent
 
+ua = UserAgent()
+
+USER_AGENT = ua.random
 AUTOTHROTTLE_ENABLED = True
 ROBOTSTXT_OBEY = False
-USER_AGENT = os.getenv("USER_AGENT")
 
 ITEM_PIPELINES = {
-    "scrapyProject.pipelines.ScrapyprojectPipeline": 100,
-    "scrapyProject.pipelines.SaveToDatabasePipeline": 300,
+    'scrapyProject.pipelines.RemoveIncompleteItemsPipeline': 100,
+    'scrapyProject.pipelines.UpsertPipeline': 200,
 }
 
 BOT_NAME = "scrapyProject"
