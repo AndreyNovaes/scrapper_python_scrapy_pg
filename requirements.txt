@@ -45,3 +45,4 @@ w3lib==2.1.1
 websocket-client==1.5.1
 zope.interface==6.0
 psycopg2-binary==2.9.6
+fake_useragent==1.1.3
