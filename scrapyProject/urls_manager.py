@@ -67,7 +67,7 @@ def check_url_status(urls):
 
   for url in urls:
     try:
-      response = requests.head(url, timeout=5)
+      response = requests.head(url, timeout=10)
       status_code = response.status_code
 
       if str(status_code).startswith("2") or str(status_code).startswith("3"):
