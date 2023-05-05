@@ -4,4 +4,6 @@ services:
   scrapy_app:
     platform: linux/x86_64 # desktop cpus x86_64 arquitecture like any ryzen or intel
     # platform: linux/arm64/v8 # raspberry pi, apple new cpus, smartphones ...
+    # you can change the default platform with this env on your .bashrc
+    # export DOCKER_DEFAULT_PLATFORM=linux/amd64
     build: .
