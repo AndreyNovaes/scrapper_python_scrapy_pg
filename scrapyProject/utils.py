@@ -1,4 +1,7 @@
-from w3lib.html import remove_tags
+from w3lib.html import remove_tags  
+import base64
+import os
+import uuid
 
 def remove_currency_symbol(value):
   return value.replace('R$', '')
@@ -22,4 +25,21 @@ def handle_meli_compost_category_name(category):
     return "celular"
   else:
     return category
-  
+
+def process_base64_image(image_data_base64):
+  if image_data_base64.startswith('data:image/'):
+    header, image_data_base64 = image_data_base64.split(',', 1)
+    image_format = header.split(';')[0].split('/')[1]
+
+    image_data = base64.b64decode(image_data_base64)
+
+    images_path = 'images'
+    if not os.path.exists(images_path):
+      os.makedirs(images_path)
+
+    image_filename = f"{uuid.uuid4()}.{image_format}"
+    image_filepath = os.path.join(images_path, image_filename)
+    with open(image_filepath, 'wb') as f:
+      f.write(image_data)
+      return image_filepath
+  return image_data_base64
