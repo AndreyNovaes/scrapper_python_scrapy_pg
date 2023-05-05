@@ -5,6 +5,11 @@ ua = UserAgent()
 USER_AGENT = ua.random
 AUTOTHROTTLE_ENABLED = True
 ROBOTSTXT_OBEY = False
+DOWNLOAD_TIMEOUT = 10
+DOWNLOAD_DELAY = 2
+CONCURRENT_REQUESTS = 32
+RETRY_TIMES = 3
+
 
 ITEM_PIPELINES = {
     'scrapyProject.pipelines.RemoveIncompleteItemsPipeline': 100,

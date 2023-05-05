@@ -30,7 +30,7 @@ class UpsertPipeline:
     self.cur.execute("""
       SELECT * FROM scrapped_data
       WHERE category = %s OR description = %s OR website = %s OR image = %s
-    """, (item['category'], item['description'], item['website'], item.get('image', None)))
+    """, (item['category'], item['description'], item['website'], item['image']))
     existing_products = self.cur.fetchall()
 
     matching_product = None
@@ -46,14 +46,14 @@ class UpsertPipeline:
       self.cur.execute("""
         INSERT INTO scrapped_data (id, category, description, price, image, link, website)
         VALUES (%s, %s, %s, %s, %s, %s, %s)
-      """, (id, item['category'], item['description'], item['price'], item.get('image'), item['link'], item['website']))
+      """, (id, item['category'], item['description'], item['price'], item['image'], item['link'], item['website']))
     else:
       action = "updated"
       self.cur.execute("""
         UPDATE scrapped_data
         SET category = %s, description = %s, price = %s, image = %s, link = %s, website = %s
         WHERE id = %s
-      """, (item['category'], item['description'], item['price'], item.get('image'), item['link'], item['website'], matching_product['id']))
+      """, (item['category'], item['description'], item['price'], item['image'], item['link'], item['website'], matching_product['id']))
     
     self.conn.commit()
     spider.logger.info(f"Item {action}: {item['description']}")
