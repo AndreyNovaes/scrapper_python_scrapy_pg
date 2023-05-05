@@ -10,7 +10,7 @@ class MeliSpiderSpider(scrapy.Spider):
     '/celulares-telefones/celulares-smartphones/celulares-smartphones',
     '/eletronicos-audio-video/televisores/tv'
     ]
-  number_of_pages = 45
+  number_of_pages = 41
   urls = generate_urls_meli(categories, number_of_pages)
   start_urls = check_url_status(urls)
 
@@ -22,8 +22,8 @@ class MeliSpiderSpider(scrapy.Spider):
       item_loader = MeliItemLoader(item=MeliItem(), selector=product)
 
       item_loader.add_css('description', 'h2.ui-search-item__title::text')
-      item_loader.add_css('image', 'img.ui-search-result-image__element::attr(data-src)')
-      item_loader.add_css('link', 'a.ui-search-link::attr(href)')
+      item_loader.add_xpath('image', './/img[contains(@class, "ui-search-result-image__element")]/@data-src | .//img[contains(@class, "ui-search-result-image__element")]/@src')
+      item_loader.add_css('link', 'a.ui-search-link::attr(href), img.ui-search-result-image__element::attr(src)')
       price_selector = (
         "span.price-tag.ui-search-price__part:not(.ui-search-price__original-value) > "
         "span.price-tag-amount > "
